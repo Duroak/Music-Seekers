@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Music API</title>
+        <link href="style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <main role="main">
+            <section id="js-landing-page">
+                <h1>Musical Artists</h1>
+                <form id="js-form">
+                    <label for="search-artists">Search Artist</label>
+                    <input type="text" name="search-artist" id="js-search-artist">
+               
+                    <button type="submit" value="find"> Find </button>
+                </form>
+
+                <p id="js-error-msg" class="error-msg"></p>
+            </section>
+
+            <section id="js-results-page" class="hidden">
+                <section id="js-artist-results">
+        
+                </section>
+                
+                <section id="js-youtube-results">
+                    <ul id="js-videos">
+                    </ul>
+                </section>
+            </section>
+        </main>
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
