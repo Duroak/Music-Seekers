@@ -1,6 +1,6 @@
-const musicApi="195003";
-const musicUrl="theaudiodb.com/api/v1/json/" + musicApi + "/search.php";
-const youtubeApi="AIzaSyCzRVlhRJlpk8YC4JeE555PJAfpeiMHM9U";
+const musicApi="1"; // not the real api key
+const musicUrl="http://theaudiodb.com/api/v1/json/" + musicApi + "/search.php";
+const youtubeApi="AIzaSyD2I3yBkdDXs1k4WTLiNSlyMm85yebB5Nc"; //not the real api key
 const youtubeUrl="https://www.googleapis.com/youtube/v3/search";
 
 function formatQueryParams(params) {
@@ -8,7 +8,7 @@ function formatQueryParams(params) {
     return queryItems.join('&');
 }
 
-function displayresults(responseJson) {
+function displayArtists(responseJson) {
     console.log(responseJson);
     $('#js-artist-results').empty();
     for (let i=0; i < responseJson.artists.length; i++) {
@@ -19,6 +19,17 @@ function displayresults(responseJson) {
         )};
     $('#js-results-page').removeClass('hidden');
 } 
+
+function displayYoutube(responseJson) {
+    console.log(responseJson);
+    $('#js-youtube-results').empty();
+    for (let i=0; i < responseJson.items.length; i++) {
+        $('#js-videos').append(
+            `<li><h3>${responseJson.items[i].snippet.title}</h3>
+            <img src='${responseJson.items[i].snippet.thumbnails.default.url}'>
+            </li>`
+        )};   
+}
 
 function getArtist(query) {
     const params = {
@@ -34,19 +45,43 @@ function getArtist(query) {
             }
             throw new Error(response.statusText);
         })
-        .then(responseJson => displayresults(responseJson))
+        .then(responseJson => displayArtists(responseJson))
         .catch(err => {
-            $('#js-error-msg').text(`Something went wrong: ${err.message}`); 
+            $('#js-error-msg').text(`Something went wrong with artist search: ${err.message}`); 
         });
 }
 
-//function getYoutubeVideo(params) {}
+function getYoutubeVideo(query) {
+    const params = {
+        key: youtubeApi,
+        part: 'snippet', 
+        q: query,
+        type: 'videos', 
+        maxResult: '4'
+    }
+
+    const queryString2 = formatQueryParams(params)
+    const url2 = youtubeUrl + '?' + queryString2
+    
+    fetch(url2)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error(response.statusText);
+        })
+        .then(responseJson => displayYoutube(responseJson))
+        .catch(err => {
+            $('#js-error-msg').text(`Something went wrong with youtube search: ${err.message}`);
+        }); 
+}
 
 function submitform() {
     $('form').submit(event => {
         event.preventDefault();
         const searchArtist = $('#js-search-artist').val();
         getArtist(searchArtist);
+        getYoutubeVideo(searchArtist);
     });
 }
 
