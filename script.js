@@ -1,5 +1,5 @@
 const musicApi="1"; // not the real api key
-const musicUrl="http://theaudiodb.com/api/v1/json/" + musicApi + "/search.php";
+const musicUrl="https://theaudiodb.com/api/v1/json/" + musicApi + "/search.php";
 const youtubeApi="AIzaSyD2I3yBkdDXs1k4WTLiNSlyMm85yebB5Nc"; //not the real api key
 const youtubeUrl="https://www.googleapis.com/youtube/v3/search";
 
