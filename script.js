@@ -22,7 +22,7 @@ function displayArtists(responseJson) {
 
 function displayYoutube(responseJson) {
     console.log(responseJson);
-    $('#js-youtube-results').empty();
+    $('#js-videos').empty();
     for (let i=0; i < responseJson.items.length; i++) {
         $('#js-videos').append(
             `<li><h3>${responseJson.items[i].snippet.title}</h3>
@@ -82,6 +82,7 @@ function submitform() {
         const searchArtist = $('#js-search-artist').val();
         getArtist(searchArtist);
         getYoutubeVideo(searchArtist);
+        $('#js-error-msg').empty();
     });
 }
 
