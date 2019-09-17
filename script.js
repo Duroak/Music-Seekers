@@ -26,8 +26,8 @@ function displayYoutube(responseJson) {
     for (let i=0; i < responseJson.items.length; i++) {
         $('#js-videos').append(
             `<li><h3>${responseJson.items[i].snippet.title}</h3>
-            <img src='${responseJson.items[i].snippet.thumbnails.default.url}'>
-            </li>`
+            <iframe id="ytplayer" type="text/html" width="640" height="360"
+            src="https://www.youtube-nocookie.com/embed/${responseJson.items[i].id.videoId}?autoplay=0 frameborder="0"></iframe><li>`            
         )};   
 }
 
