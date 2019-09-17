@@ -47,7 +47,7 @@ function getArtist(query) {
         })
         .then(responseJson => displayArtists(responseJson))
         .catch(err => {
-            $('#js-error-msg').text(`Something went wrong with artist search: ${err.message}`); 
+            $('#js-error-msg').text(`Artist description not found check spelling`); 
         });
 }
 
@@ -72,7 +72,7 @@ function getYoutubeVideo(query) {
         })
         .then(responseJson => displayYoutube(responseJson))
         .catch(err => {
-            $('#js-error-msg').text(`Something went wrong with youtube search: ${err.message}`);
+            $('#js-error-msg').text(`Youtube video not found`);
         }); 
 }
 
