@@ -5,15 +5,15 @@
         <meta name="viewport" content="width=device-width">
         <title>Music API</title>
         <link href="style.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Righteous&display=swap" rel="stylesheet">
     </head>
     <body>
         <main role="main">
             <section id="js-landing-page">
-                <h1>Musical Artists</h1>
+                <p>Musical Artists</p>
                 <form id="js-form">
-                    <label for="search-artists">Search Artist</label>
-                    <input type="text" name="search-artist" id="js-search-artist" placeholder="type exact artist name">
-               
+                    <label for="search-artists">Search Artist</label> <br>
+                    <input type="text" name="search-artist" id="js-search-artist" placeholder="type exact artist name"> <br>
                     <button type="submit" value="find"> Find </button>
                 </form>
 
@@ -21,14 +21,15 @@
             </section>
 
             <section id="js-results-page" class="hidden">
-                <section id="js-artist-results">
+                <article id="js-artist-results">
         
-                </section>
+                </article>
                 
-                <section id="js-youtube-results">
+                <figure id="js-youtube-results">
+                    <p>VIDEOS</p>
                     <ul id="js-videos">
                     </ul>
-                </section>
+                </figure>
             </section>
         </main>
         <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
