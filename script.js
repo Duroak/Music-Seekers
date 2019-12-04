@@ -29,8 +29,8 @@ function displayYoutube(responseJson) {
     $('#js-videos').empty();
     for (let i=0; i < responseJson.items.length; i++) {
         $('#js-videos').append(
-            `<li><iframe id="ytplayer" type="text/html" width="640" height="360 fs="1" frameborder="0"
-            src="https://www.youtube-nocookie.com/embed/${responseJson.items[i].id.videoId}?autoplay=0 frameborder="0"></iframe><li>`            
+            `<li><iframe id="ytplayer" type="text/html" width="640" height="360"
+            src="https://www.youtube-nocookie.com/embed/${responseJson.items[i].id.videoId}?autoplay=0 frameborder="0" allowfullscreen></iframe><li>`            
         )};   
 }
 
@@ -85,6 +85,7 @@ function scroll() {
     $('html, body').animate({
         scrollTop: $("#js-results-page").offset().top
     }, 1000);
+
 }
 
 //searching the name of artist or group and scrolls to the section of artist bio

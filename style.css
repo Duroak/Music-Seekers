@@ -132,7 +132,9 @@ button:active {
 }
 
 #js-videos iframe {
-    width: 100;
+    width: 100%;
+    margin-bottom: 15px;
+    border: none;
 }
 
 @media only screen and (min-width: 376px) {
